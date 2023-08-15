@@ -3,10 +3,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { getMe } from './utils/API'; 
 import Auth from './utils/auth'; 
-import client from './utils/apolloClient';
+import { GET_ME } from './utils/queries';
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3000/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   const isLoggedIn = Auth.loggedIn();
