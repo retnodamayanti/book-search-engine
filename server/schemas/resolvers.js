@@ -15,6 +15,7 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
+      console.log('User during login:', user); 
 
       if (!user) {
         throw new AuthenticationError('Incorrect email');
