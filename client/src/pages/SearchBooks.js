@@ -57,24 +57,35 @@ const SearchBooks = () => {
 
   const handleSaveBook = async (bookId) => {
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
-
+  
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+  
     if (!token) {
+      console.log("User not logged in. Cannot save the book.");
       return false;
     }
-
+  
     try {
+      console.log("Attempting to save book:", bookToSave);
+    
       const { data } = await saveBook({
-        variables: { input: bookToSave }, // Pass the input variables to the mutation
+        variables: { input: bookToSave }, // Change 'bookData' to 'input'
+        context: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       });
-
-      // Update savedBookIds state with the new saved book's bookId
-      setSavedBookIds([...savedBookIds, data.saveBook._id]);
+    
+      console.log("Book saved:", data.saveBook);
+    
+      // if book successfully saves to user's account, save book id to state
+      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
-      console.error(err);
-    }
+      console.error("Error saving book:", err);
+    }    
   };
+  
 
   return (
     <>
