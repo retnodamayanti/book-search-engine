@@ -1,7 +1,7 @@
 # Google Books Search Engine with GraphQL
 
 ## Description
-This project is a Google Books search engine built using the MERN stack (MongoDB, Express.js, React, Node.js), with a GraphQL backend powered by Apollo Server. Users can search for books, view search results, save books to their account, and manage their saved books list. Visit the deployed application [here](https://hidden-sands-72845-9fec09b954be.herokuapp.com/)
+This project is a Google Books search engine built using the MERN stack (MongoDB, Express.js, React, Node.js), with a GraphQL backend powered by Apollo Server. Users can search for books, view search results, save books to their accounts, and manage their saved books list. Visit the deployed application here: https://hidden-sands-72845-9fec09b954be.herokuapp.com/
 
 ## Table of Contents
 
